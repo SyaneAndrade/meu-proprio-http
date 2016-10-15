@@ -17,11 +17,9 @@ class Tree(object):
         self.children.remove(name)
 
     def printing(self):
-            return("Versao : " + str(self.version) + "\n" + \
-                   "Criacao : " + str(self.creation) + "\n" + \
-                   "Modificacao : " + str(self.modification) + "\n" + \
-                   "Tamanho : " + str(self.tamanho) + "\n\n" + \
-                    self.data + "\n"
+            return("Version : " + str(self.version) + "\n" + \
+                   "Creation: " + str(self.creation) + "\n" + \
+                   "Modification : " + str(self.modification) + "\n"
                    )
 
     def modificationTree(self, data):
