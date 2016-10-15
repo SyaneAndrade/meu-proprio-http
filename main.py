@@ -1,4 +1,5 @@
-from HTTPServer.HTTPServer import *
+from HTTPServer.httpserver import *
+from HTTPServer.httpserver_thread import *
 from SA.Tree import *
 
 

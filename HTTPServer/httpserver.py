@@ -284,7 +284,6 @@ class HTTPServer(object):
         else:
             self.response_headers(client_connection, None, 400, quest,
                                   None)
-
     def iniciaServer(self):
         try:
             udp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -292,30 +291,35 @@ class HTTPServer(object):
             orig = (self.host, self.port)
             udp.bind(orig)
             udp.listen(1)
-            print('Serve HTTP na porta %s ...' % self.port)
-            while True:
-                client_connection, client_address = udp.accept()
-                request = client_connection.recv(1024)
-                a = bytes.decode(request)
-                give = a.split(' ')[0]
-
-                if (give == 'GET'):
-                    self.GET(a, client_connection)
-
-                elif (give == 'POST'):
-                    self.POST(a, client_connection)
-
-                elif (give == 'PUT'):
-                    self.PUT(a, client_connection)
-
-                elif (give == 'HEAD'):
-                    self.HEAD(a, client_connection)
-                elif(give == 'DELETE'):
-                    self.DELETE(a, client_connection)
-
-                else:
-                    client_connection.sendall(str.encode('HTTP/1.1 ' + give + ' 503 SERVICE UNAVAILIABLE\r\n\r\n'))
-                client_connection.close()
+            self.protocolHTTP(udp)
         except:
             print("Conexão não estabelicida " + "\n")
             raise
+
+
+    def protocolHTTP(self, udp):
+        print('Serve HTTP na porta %s ...' % self.port)
+        while True:
+            client_connection, client_address = udp.accept()
+            request = client_connection.recv(1024)
+            a = bytes.decode(request)
+            give = a.split(' ')[0]
+
+            if (give == 'GET'):
+                self.GET(a, client_connection)
+
+            elif (give == 'POST'):
+                self.POST(a, client_connection)
+
+            elif (give == 'PUT'):
+                self.PUT(a, client_connection)
+
+            elif (give == 'HEAD'):
+                self.HEAD(a, client_connection)
+
+            elif(give == 'DELETE'):
+                self.DELETE(a, client_connection)
+
+            else:
+                client_connection.sendall(str.encode('HTTP/1.1 ' + give + ' 503 SERVICE UNAVAILIABLE\r\n\r\n'))
+            client_connection.close()
