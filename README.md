@@ -1,9 +1,14 @@
 # meu-proprio-http
 
+
 Trabalho de Sistemas Distribuido
+
 Curso Ciência da Computação
+
 Universidade Federal de Uberlândia
+
 Jessiane Gomes Andrade
+
 
 Sistema de arquivo distribuido com servidor HTTPI
 
@@ -21,7 +26,7 @@ tamanho.
 >Não utilizar blibliotecas prontas para o HTTP
 
 
-A linguagem utlizada é o python. O servidor foi implementado usando 
+A linguagem utlizada é o python 3.5. O servidor foi implementado usando 
 sockets.
 Para maior esclarecimento quanto à ideia utilizei os seguintes tutoriais:
 
@@ -59,7 +64,7 @@ Se existir ele modifica e retorna as informações já modificadas. Se não ele 
 
 Metodo DELETE do server
 
-Receve o path para eliminar uma raiz ou um no. Verifica se o mesmo existe.
+Recebe o path para eliminar uma raiz ou um no. Verifica se o mesmo existe.
 Se existir ele delete, se não retorna um NOT FOUND.
 
 
